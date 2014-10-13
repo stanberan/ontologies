@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://t3.abdn.ac.uk/ontologies/iota.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://t3.abdn.ac.uk/ontologies/iota.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="ActiveDigitalArtefact">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Active Digital Artefact</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Mechanical Sensor or observation sensor"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="VirtualEntity"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PassiveDigitalArtefact"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="User"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Actuator">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Device"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#VirtualEntity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Virtual Entity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Mechanical Sensor or observation sensor"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Device">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysicalEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tag">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Tag</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Device"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Tag comment</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#User">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Resource">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Resource</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Resource</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Sensor">
+    <rdfs:subClassOf rdf:resource="#Device"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NetworkResource">
+    <rdfs:subClassOf rdf:resource="#Resource"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PassiveDigitalArtefact">
+    <owl:disjointWith rdf:resource="#ActiveDigitalArtefact"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Mechanical Sensor or observation sensor"</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Passive Digital Entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#VirtualEntity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OnDeviceResource">
+    <rdfs:subClassOf rdf:resource="#Resource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >On-Device resource</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Service">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Service</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Service</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ActiveDigitalArtefact"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Physical_Entity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Physical Entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="represents">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >relates to</rdfs:label>
+    <rdfs:domain rdf:resource="#VirtualEntity"/>
+    <rdfs:range rdf:resource="#PhysicalEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAssociatedWith">
+    <rdfs:domain rdf:resource="#VirtualEntity"/>
+    <rdfs:range rdf:resource="#Service"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is associated with</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Mechanical Sensor or observation sensor"</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="contains"/>
+  <owl:ObjectProperty rdf:ID="isAttachedTo">
+    <rdfs:domain rdf:resource="#Device"/>
+    <rdfs:range rdf:resource="#PhysicalEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="exposes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >exposes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="monitors">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >monitors</rdfs:label>
+    <rdfs:range rdf:resource="#PhysicalEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="identifies">
+    <rdfs:domain rdf:resource="#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Mechanical Sensor or observation sensor"</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >identifies</rdfs:label>
+    <rdfs:range rdf:resource="#PhysicalEntity"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

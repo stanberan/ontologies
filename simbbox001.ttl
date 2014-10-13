@@ -1,0 +1,88 @@
+@prefix : <http://t3.abdn.ac.uk/t3v2/1/device/simbbox001/> .
+@prefix busBundle:  <http://t3.abdn.ac.uk/ontologies/busBundle.owl#> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix iota:    <http://t3.abdn.ac.uk/ontologies/iota.owl#> .
+@prefix ns:      <http://www.w3.org/2006/vcard/ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp:      <http://spinrdf.org/sp#> .
+@prefix spin:    <http://spinrdf.org/spin#> .
+@prefix ttt:      <http://t3.abdn.ac.uk/ontologies/t3.owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+
+:CarManufacturer
+      rdf:type prov:Organization , foaf:Organization ;
+      rdfs:label "Car Manufacturer"^^xsd:string ;
+      ns:hasAddress "Aberdeen,UK"^^xsd:string;
+      foaf:homepage <http://www.carmanufacturer.gov.uk/> ;
+      foaf:logo <http://www.t3.abdn.ac.uk/image/carman.png> ;
+      foaf:mbox <mailto:enquiries@carmanufacturer.gov.uk> ;
+      foaf:phone  <tel:0000111>;
+      foaf:name "Vixhall UK"^^xsd:string .
+      
+ :CarManufacturerServer prov:actedOnBehalfOf :CarManufacturer .
+ :BboxServer prov:actedOnBehalfOf :Owner .
+ :SimBBoxController prov:actedOnBehalfOf :Owner .
+ 
+ :CarManufacturerServer a prov:Agent .
+  :BboxServer a prov:Agent .
+  :SimBBoxController a prov:Agent .
+   :CarManufacturerServer a iota:Service.
+  :BboxServer a iota:Service .
+  :SimBBoxController a iota:Service .
+
+ 
+  :SimBBoxController iota:represents :simbbox001 .
+  :hash ttt:identifies :simbbox001 .
+  
+ :simbbox001
+        a       <http://www.w3.org/ns/prov#Entity> , <http://t3.abdn.ac.uk/ontologies/t3.owl#TelematicsDevice> ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#deviceDescription>
+                "This device is used to capture driving behaviour of vehicle owners in order to tailor their insurance premiums." ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#manufacturer>
+                :Manufacturer ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#owner>
+                :Owner ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#pictureURL>
+                <http://t3.abdn.ac.uk/image/simbox.png> ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#securityDescription>
+                "SimBBox is sending data through SSL connection and implementing Basic Authentication for access control." ;
+        <http://t3.abdn.ac.uk/ontologies/t3.owl#typeDescription>
+                "Telemetry Box" ;
+        foaf:name
+                "SimBBox Simulator Telematics App" .
+
+:Owner
+        a       foaf:Organization ;
+        <http://www.w3.org/2006/vcard/ns#hasAddress>
+                "MacRobert Building, University of Aberdeen, Aberdeen, UK" ;
+        foaf:homepage
+                <http://t3.abdn.ac.uk/simbbox> ;
+        foaf:logo
+                <http://t3.abdn.ac.uk/image/simbox.png> ;
+        foaf:mbox
+                <mailto:simbbox@simbbox.co.uk> ;
+        foaf:name
+                "SimBBox LTD" ;
+        foaf:phone
+                <0770000000> .
+
+:Manufacturer
+        a       foaf:Organization;
+        <http://www.w3.org/2006/vcard/ns#hasAddress>
+                "Sony Europe Limited - Head Office UK, The Heights, Brooklands, Weybridge, Surrey" ;
+        foaf:homepage
+                <http://www.sony.co.uk> ;
+        foaf:logo
+                <http://www.sony.co.uk/pro/assets/images/sony_logo_print.gif> ;
+        foaf:mbox
+                <mailto:enquiries.ses@eu.sony.com> ;
+        foaf:name
+                "Sony Europe Limited " ;
+        foaf:phone
+                <07738309384> .
+                
+
